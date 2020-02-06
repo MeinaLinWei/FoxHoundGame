@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * A utility class for the fox hound program.
@@ -32,7 +33,7 @@ public class FoxHoundUtils {
     public static String[] initialisePositions(int dimension) {
 
         if ((dimension < MIN_DIM) || (dimension > MAX_DIM)) {                           //Checking that the range of the board is within the range required
-            System.out.println("The dimension of the board should be between 4 and 26.");
+            System.err.println("ERROR: The dimension of the board should be between 4 and 26.");
             dimension = DEFAULT_DIM;
         }
 
@@ -43,14 +44,32 @@ public class FoxHoundUtils {
             start[count] = ((char) ('B' + (2 * count))) + "1";                        // initial position of Hounds
         }
 
-        start[size-1] = Character.toString((char) ('A' + size-1)) + dimension;          // initial position of Fox
+        if(dimension % 2 == 0){
+            start[size-1] = Character.toString((char) ('A' + size-1)) + dimension;          // initial position of Fox
+        } else {
+            start[size-1] = Character.toString((char) ('A' + size)) + dimension;
+        }
 
         return start;
     }
 
     public static void main(String[] args){
 
-        System.out.println(Arrays.toString(initialisePositions(8)));
+        int dimension;
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Do you want to change board dimension? (Y/N): ");
+        String change = scan.next();
+
+        if(change.equals("N")){
+            System.out.println("The default dimension of the board is 8x8.");
+            dimension = DEFAULT_DIM;
+        } else {
+            System.out.print("Please enter dimension of board: ");
+            dimension = scan.nextInt();
+            scan.close();
+        }
+
+        System.out.println(Arrays.toString(initialisePositions(dimension)));
 
     }
 
