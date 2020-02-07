@@ -23,7 +23,24 @@ public class FoxHoundUI {
 
     public static String[] displayBoard(String[] players, int dimension) {
 
-        String[] defaultPlayers = new String[]{"B1","D1","F1","H1","E8"};
+        char[] alphabets = new char[dimension];
+        for(int count = 0; count < dimension; count++){
+            alphabets[count] = (char)('A' + count);
+        }
+
+        /*String[] ans = {};
+        String dots = ".";
+        for(int i = 0; i <= (dimension); i++){
+            for(int j = 0; j < (dimension-2); j++){
+                String[] output1 = {(j+1) + dots.repeat(dimension-2) + (j+1)};
+                ans = output1;
+            }
+
+            String[] output1 = {(i+1) + dots.repeat(dimension-2) + (i+1)};
+
+        }*/
+
+        /*String[] defaultPlayers = new String[]{"B1","D1","F1","H1","E8"};
         String defaultOutput =
                 "  ABCDEFGH  \n" +
                 "\n" +
@@ -38,7 +55,9 @@ public class FoxHoundUI {
                 "\n" +
                 "  ABCDEFGH  ";
 
-        return (String.toArrays(defaultOutput));
+        return (Arrays.toString(defaultOutput));
+         */
+        return ans;
     }
 
     public static void main(String[] args){
@@ -76,7 +95,7 @@ public class FoxHoundUI {
             start[size-1] = Character.toString((char) ('A' + size)) + dimension;
         }
 
-        System.out.println(displayBoard(start, dimension));
+        System.out.println(Arrays.toString(displayBoard(start, dimension)));
 
     }
 
