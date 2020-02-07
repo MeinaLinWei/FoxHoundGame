@@ -59,8 +59,9 @@ public class FoxHoundUtils {
         Scanner scan = new Scanner(System.in);
         System.out.print("Do you want to change board dimension? (Y/N): ");
         String change = scan.next();
+        String changeUpper = change.toUpperCase();                              //If the user input lower case y and n
 
-        if(change.equals("N")){
+        if(changeUpper.equals("N")){
             System.out.println("The default dimension of the board is 8x8.");
             dimension = DEFAULT_DIM;
         } else {
