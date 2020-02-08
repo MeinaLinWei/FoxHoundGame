@@ -27,7 +27,8 @@ public class FoxHoundUtils {
 
     // HINT Write your own constants here to improve code readability ...
     // size: store the size of the array for initial positions both hound and fox.
-    // start: initial position of hounds and fox
+    // boardCoordinates: position of hounds and fox.
+
 
 
     public static String[] initialisePositions(int dimension) {
@@ -51,7 +52,7 @@ public class FoxHoundUtils {
             boardCoordinates[count] = ((char) ('B' + (2 * count))) + "1";
         }
 
-        // initial position of Fox
+        // initial position of Fox.
         if(dimension % 2 == 0){
             if((middleColumn % 2) == 0){
                 boardCoordinates[dimension/2] = Character.toString((char) ('A' + middleColumn-2)) + dimension;
