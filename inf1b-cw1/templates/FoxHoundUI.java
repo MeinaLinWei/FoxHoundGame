@@ -21,67 +21,27 @@ public class FoxHoundUI {
     /** Menu entry to terminate the program. */
     public static final int MENU_EXIT = 2;
 
-    public static String[] displayBoard(String[] players, int dimension) {
-
+    public static void displayBoard(String[] players, int dimension) {
         char[] alphabets = new char[dimension];
-        for(int count = 0; count < dimension; count++){
-            alphabets[count] = (char)('A' + count);
+        for (int count = 0; count < dimension; count++) {
+            alphabets[count] = (char) ('A' + count);
         }
 
-        String[][] location = new String[dimension][dimension];
-
-        for(int i = 0; i < dimension; i++){
-            location[0][i+1] = Character.toString(alphabets[i]);
-            location[dimension][i+1] = Character.toString(alphabets[i]);
-        }
-
-        String dots = ".";
-        for(int j = 0; j < (dimension); j++){
-
-            location[j+1][1] = Integer.toString (j+1);
-            location[j+1][dimension] = Integer.toString (j+1);
-
-            location[dimension-1][1] = Integer.toString (dimension);
-            location[dimension-1][dimension] = Integer.toString (dimension);
-
-            for (int m = 0; m < dimension; m++){
-                location[j+1][m] = ".";
-            }
-        }
-
-        return location;
-
-        /*String[] ans = {};
-        String dots = ".";
-        for(int i = 0; i <= (dimension); i++){
-            for(int j = 0; j < (dimension-2); j++){
-                String[] output1 = {(j+1) + dots.repeat(dimension-2) + (j+1)};
-                ans = output1;
+        length = dimension + 4;
+        for(int i = 0; i < length; i++){
+            if ((i = 0 || i = (length - 1)) && (dimension < 10)) {
+                System.out.println("  " + printletters(dimension) + "  ");
+            } else {//( ((i = 0 || i = (length - 1)) && (dimension > 10))) {
+                System.out.println("   " + printletters(dimension) + "   ");
             }
 
-            String[] output1 = {(i+1) + dots.repeat(dimension-2) + (i+1)};
+        }
 
-        }*/
-
-        /*String[] defaultPlayers = new String[]{"B1","D1","F1","H1","E8"};
-        String defaultOutput =
-                "  ABCDEFGH  \n" +
-                "\n" +
-                "1 .H.H.H.H 1\n" +
-                "2 ........ 2\n" +
-                "3 ........ 3\n" +
-                "4 ........ 4\n" +
-                "5 ........ 5\n" +
-                "6 ........ 6\n" +
-                "7 ........ 7\n" +
-                "8 ....F... 8\n" +
-                "\n" +
-                "  ABCDEFGH  ";
-
-        return (Arrays.toString(defaultOutput));
-
-
-         */
+        public static void printLetters(int dimension){
+            for(int i = 0; i < dimension; i++){
+                System.out.print(alphabets[count]);
+            }
+        }
     }
 
     /*public static void main(String[] args){
@@ -165,6 +125,62 @@ public class FoxHoundUI {
     }
 }
 
+
+/*String[][] location = new String[dimension][dimension];
+
+        for(int i = 0; i < dimension; i++){
+            location[0][i+1] = Character.toString(alphabets[i]);
+            location[dimension][i+1] = Character.toString(alphabets[i]);
+        }
+
+        String dots = ".";
+        for(int j = 0; j < (dimension); j++){
+
+            location[j+1][1] = Integer.toString (j+1);
+            location[j+1][dimension] = Integer.toString (j+1);
+
+            location[dimension-1][1] = Integer.toString (dimension);
+            location[dimension-1][dimension] = Integer.toString (dimension);
+
+            for (int m = 0; m < dimension; m++){
+                location[j+1][m] = ".";
+            }
+        }
+
+        return location;*/
+
+
+
+        /*String[] ans = {};
+        String dots = ".";
+        for(int i = 0; i <= (dimension); i++) {
+            for (int j = 0; j < (dimension); j++) {
+
+            }
+
+            String[] output1 = {(i + 1) + dots.repeat(dimension - 2) + (i + 1)};
+
+        }*/
+
+        /*String[] defaultPlayers = new String[]{"B1","D1","F1","H1","E8"};
+        String defaultOutput =
+                "  ABCDEFGH  \n" +
+                "\n" +
+                "1 .H.H.H.H 1\n" +
+                "2 ........ 2\n" +
+                "3 ........ 3\n" +
+                "4 ........ 4\n" +
+                "5 ........ 5\n" +
+                "6 ........ 6\n" +
+                "7 ........ 7\n" +
+                "8 ....F... 8\n" +
+                "\n" +
+                "  ABCDEFGH  ";
+
+        return (Arrays.toString(defaultOutput));
+
+
+         */
 
 
 
