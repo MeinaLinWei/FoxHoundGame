@@ -32,25 +32,41 @@ public class FoxHoundUtils {
 
     public static String[] initialisePositions(int dimension) {
 
-        if ((dimension < MIN_DIM) || (dimension > MAX_DIM)) {                           //Checking that the range of the board is within the range required
+        // array size: total number of hounds and fox.
+        int size = ((int)(Math.floor(dimension / 2)) + 1);
+        String[] boardCoordinates = new String[size];
+
+        // calculate position of the middle column.
+        int middleColumn = ((dimension/2)+1);
+        int[] pos = new int[size];
+
+        // check that board is within the range required.
+        if ((dimension < MIN_DIM) || (dimension > MAX_DIM)) {
             System.err.println("ERROR: The dimension of the board should be between 4 and 26.");
             dimension = DEFAULT_DIM;
         }
 
-        int size = ((int)(Math.floor(dimension / 2)) + 1);
-        String[] start = new String[size];
-
+        // initial position of Hounds.
         for (int count = 0; count < (dimension / 2); count++) {
-            start[count] = ((char) ('B' + (2 * count))) + "1";                        // initial position of Hounds
+            boardCoordinates[count] = ((char) ('B' + (2 * count))) + "1";
         }
 
+        // initial position of Fox
         if(dimension % 2 == 0){
-            start[size-1] = Character.toString((char) ('A' + size-1)) + dimension;          // initial position of Fox
+            if((middleColumn % 2) == 0){
+                boardCoordinates[dimension/2] = Character.toString((char) ('A' + middleColumn-2)) + dimension;
+            } else {
+                boardCoordinates[dimension/2] = Character.toString((char) ('A' + middleColumn -1)) + dimension;
+            }
         } else {
-            start[size-1] = Character.toString((char) ('A' + size)) + dimension;
+            if((middleColumn % 2) == 0){
+                boardCoordinates[dimension/2] = Character.toString((char) ('A' + middleColumn - 1)) + dimension;
+            } else {
+                boardCoordinates[dimension/2] = Character.toString((char) ('A' + middleColumn)) +dimension;
+            }
         }
 
-        return start;
+        return boardCoordinates;
     }
 
     public static void main(String[] args){
