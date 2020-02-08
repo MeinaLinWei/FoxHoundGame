@@ -28,6 +28,29 @@ public class FoxHoundUI {
             alphabets[count] = (char)('A' + count);
         }
 
+        String[][] location = new String[dimension][dimension];
+
+        for(int i = 0; i < dimension; i++){
+            location[0][i+1] = Character.toString(alphabets[i]);
+            location[dimension][i+1] = Character.toString(alphabets[i]);
+        }
+
+        String dots = ".";
+        for(int j = 0; j < (dimension); j++){
+
+            location[j+1][1] = Integer.toString (j+1);
+            location[j+1][dimension] = Integer.toString (j+1);
+
+            location[dimension-1][1] = Integer.toString (dimension);
+            location[dimension-1][dimension] = Integer.toString (dimension);
+
+            for (int m = 0; m < dimension; m++){
+                location[j+1][m] = ".";
+            }
+        }
+
+        return location;
+
         /*String[] ans = {};
         String dots = ".";
         for(int i = 0; i <= (dimension); i++){
@@ -56,11 +79,12 @@ public class FoxHoundUI {
                 "  ABCDEFGH  ";
 
         return (Arrays.toString(defaultOutput));
+
+
          */
-        return ans;
     }
 
-    public static void main(String[] args){
+    /*public static void main(String[] args){
 
         int dimension;
         Scanner scan = new Scanner(System.in);
@@ -97,7 +121,7 @@ public class FoxHoundUI {
 
         System.out.println(Arrays.toString(displayBoard(start, dimension)));
 
-    }
+    }*/
 
     /**
      * Print the main menu and query the user for an entry selection.
