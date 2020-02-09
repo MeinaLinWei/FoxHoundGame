@@ -16,6 +16,10 @@ public class Main {
     /** Symbol to represent the fox figure. */
     public static final char FOX_FIELD = 'F';
 
+
+
+
+
     public static String displayBoard(String[] players, int dimension) {
         char[] alphabets = new char[dimension];
         for (int count = 0; count < dimension; count++) {
@@ -44,6 +48,10 @@ public class Main {
 
     }
 
+
+
+
+
     public static String printLetters (int dimension){
         String alphabets = "";
         for(int i = 0; i < dimension; i++){
@@ -52,49 +60,74 @@ public class Main {
         return alphabets;
     }
 
-    public static int printRest (int dimension){
-        int lines = 0;
+
+
+
+
+    public static String[] printRest (int dimension){
         String dots = ".";
+        String[] lines = new String[dimension];
         for(int count = 0; count < dimension; count++){
-            lines = (count+1);
+            lines[count] = ((count+1) + " " + dots.repeat(dimension-2) + " " + (count+1));
         }
         return lines;
     }
 
 
+
+
+
     public static String[] initialisePositions(int dimension) {
 
-        if ((dimension < MIN_DIM) || (dimension > MAX_DIM)) {                           //Checking that the range of the board is within the range required
+        // array size: total number of hounds and fox.
+        int size = ((int)(Math.floor(dimension / 2)) + 1);
+        String[] boardCoordinates = new String[size];
+
+        // calculate position of the middle column.
+        int middleColumn = ((dimension/2)+1);
+        int[] pos = new int[size];
+
+        // check that board is within the range required.
+        if ((dimension < MIN_DIM) || (dimension > MAX_DIM)) {
             System.err.println("ERROR: The dimension of the board should be between 4 and 26.");
             dimension = DEFAULT_DIM;
         }
 
-        int size = ((int)(Math.floor(dimension / 2)) + 1);
-        String[] start = new String[size];
-
+        // initial position of Hounds.
         for (int count = 0; count < (dimension / 2); count++) {
-            start[count] = ((char) ('B' + (2 * count))) + "1";                        // initial position of Hounds
+            boardCoordinates[count] = ((char) ('B' + (2 * count))) + "1";
         }
 
-        boolean even = (dimension % 2 == 0);
-        boolean evenColumn = ((dimension+1)%2 == 0);
-
-        if(even){
-            start[size-1] = Character.toString((char) ('A' + size-1)) + dimension;          // initial position of Fox
+        // initial position of Fox.
+        if(dimension % 2 == 0){
+            if((middleColumn % 2) == 0){
+                boardCoordinates[dimension/2] = Character.toString((char) ('A' + middleColumn-2)) + dimension;
+            } else {
+                boardCoordinates[dimension/2] = Character.toString((char) ('A' + middleColumn -1)) + dimension;
+            }
         } else {
-            start[size-1] = Character.toString((char) ('A' + size)) + dimension;
+            if((middleColumn % 2) == 0){
+                boardCoordinates[dimension/2] = Character.toString((char) ('A' + middleColumn - 1)) + dimension;
+            } else {
+                boardCoordinates[dimension/2] = Character.toString((char) ('A' + middleColumn)) +dimension;
+            }
         }
 
-        return start;
+        return boardCoordinates;
     }
 
-    public static void main(String[] args){
 
+
+
+
+    public static void main(String[] args) {
         int dimension;
         Scanner scan = new Scanner(System.in);
         System.out.print("Do you want to change board dimension? (Y/N): ");
         String change = scan.next();
-        String changeUpper = change.toUpperCase();                              //If the user input lower case y and n
+
+        //If the user input lowercase 'y' and 'n'.
+        String changeUpper = change.toUpperCase();
 
         if(changeUpper.equals("N")){
             System.out.println("The default dimension of the board is 8x8.");
@@ -105,7 +138,12 @@ public class Main {
             scan.close();
         }
 
-        System.out.println(Arrays.toString(initialisePositions(dimension)));
+        // locations: coodinates of the hound and the fox in the board according to the dimension that the user has entered
+        String[] locations = new String[dimension];
+        locations = (initialisePositions(dimension));
+
+        System.out.println(Arrays.toString(locations) + "\n");
+        System.out.println(displayBoard(locations, dimension));
 
     }
 }
