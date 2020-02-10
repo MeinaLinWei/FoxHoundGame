@@ -20,31 +20,26 @@ public class Main {
 
 
 
-    public static String displayBoard(String[] players, int dimension) {
-        char[] alphabets = new char[dimension];
-        for (int count = 0; count < dimension; count++) {
-            alphabets[count] = (char) ('A' + count);
-        }
+    public static void displayBoard(String[] players, int dimension) {
 
-        String var = "";
-        int length = dimension + 4;
-        for (int i = 0; i < length; i++) {
-            if ((i == 0 || i == (length - 1)) && (dimension < 10)) {
-                var = ("  " + printLetters(dimension) + "  " +
-                        "\n" +
-                        printRest(dimension) +
-                        "\n" +
-                        "  " + printLetters(dimension) + "  ");
-            } else {
-                var = ("   " + printLetters(dimension) + "   " +
-                        "\n" +
-                        printRest(dimension) +
-                        "\n" +
-                        "   " + printLetters(dimension) + "   ");
+        if(dimension < 10){
+            for (int i = 0; i <= (dimension+1); i++) {
+
+                if (i == 0 || i == (dimension+1)){
+                    System.out.println("  " + printLetters(dimension));
+                } else {
+                    printRest(dimension,i);
+                }
             }
-
+        } else {
+            for (int i = 0; i <= (dimension+1); i++) {
+                if (i == 0 || i == (dimension - 1)) {
+                    System.out.println("   " + printLetters(dimension));
+                } else {
+                    printRest(dimension, i);
+                }
+            }
         }
-        return var;
 
     }
 
@@ -64,13 +59,15 @@ public class Main {
 
 
 
-    public static String[] printRest (int dimension){
+    public static void printRest (int dimension, int count){
         String dots = ".";
-        String[] lines = new String[dimension];
-        for(int count = 0; count < dimension; count++){
-            lines[count] = ((count+1) + " " + dots.repeat(dimension-2) + " " + (count+1));
+        if (dimension < 10) {
+            System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
+        } else if (dimension > 10 && count < 10){
+            System.out.println("0"+(count) + " " + dots.repeat(dimension) + " " + "0"+(count));
+        } else {
+            System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
         }
-        return lines;
     }
 
 
@@ -143,7 +140,7 @@ public class Main {
         locations = (initialisePositions(dimension));
 
         System.out.println(Arrays.toString(locations) + "\n");
-        System.out.println(displayBoard(locations, dimension));
+        displayBoard(locations, dimension);
 
     }
 }
