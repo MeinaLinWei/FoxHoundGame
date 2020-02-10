@@ -33,7 +33,7 @@ public class Main {
             }
         } else {
             for (int i = 0; i <= (dimension+1); i++) {
-                if (i == 0 || i == (dimension - 1)) {
+                if (i == 0 || i == (dimension+1)) {
                     System.out.println("   " + printLetters(dimension));
                 } else {
                     printRest(dimension, i);
@@ -63,7 +63,7 @@ public class Main {
         String dots = ".";
         if (dimension < 10) {
             System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
-        } else if (dimension > 10 && count < 10){
+        } else if (dimension >= 10 && count < 10){
             System.out.println("0"+(count) + " " + dots.repeat(dimension) + " " + "0"+(count));
         } else {
             System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
