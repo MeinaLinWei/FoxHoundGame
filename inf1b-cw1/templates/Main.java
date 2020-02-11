@@ -24,10 +24,12 @@ public class Main {
 
         String firstLine = printLetters(dimension);
 
-        String[] arrayLetters = new String[players.length];
-
-        for(int i = 0; i < players.length; i++){
-            arrayLetters[i] = (firstLine.charAt(i) + Integer.toString(1));
+        // Put all letters in an array. They are later compared for the position of the hounds and the fox.
+        String[][] arrayLetters = new String[dimension][dimension];
+        for(int j = 0; j < dimension; j++){
+            for(int i = 0; i < dimension; i++){
+                arrayLetters[j][i] = (firstLine.charAt(i) + Integer.toString(j+1));
+            }
         }
 
         if(dimension < 10){
@@ -66,14 +68,15 @@ public class Main {
 
 
 
-    public static void printRest (String[] arrayLetters, String[] players, int dimension, int count){
+    public static void printRest (String[][] arrayLetters, String[] players, int dimension, int count){
         String dots = ".";
 
         for(int i = 0; i <  players.length; i++){
-            if((players[i]) == arrayLetters[i]){
+            if((players[i]) == arrayLetters[i][i]){
                 System.out.println((i+1) + " " + dots.repeat(i-1) + "H" + dots.repeat(dimension-i-2)+ " " + (i+1));
             }
         }
+
         if (dimension < 10) {
             System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
         } else if (dimension >= 10 && count < 10){
