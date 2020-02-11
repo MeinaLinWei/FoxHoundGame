@@ -22,21 +22,28 @@ public class Main {
 
     public static void displayBoard(String[] players, int dimension) {
 
+        String firstLine = printLetters(dimension);
+
+        String[] arrayLetters = new String[players.length];
+
+        for(int i = 0; i < players.length; i++){
+            arrayLetters[i] = (firstLine.charAt(i) + Integer.toString(1));
+        }
+
         if(dimension < 10){
             for (int i = 0; i <= (dimension+1); i++) {
-
                 if (i == 0 || i == (dimension+1)){
-                    System.out.println("  " + printLetters(dimension));
+                    System.out.println("  " + firstLine);
                 } else {
-                    printRest(dimension,i);
+                    printRest(arrayLetters, players, dimension,i);
                 }
             }
         } else {
             for (int i = 0; i <= (dimension+1); i++) {
                 if (i == 0 || i == (dimension+1)) {
-                    System.out.println("   " + printLetters(dimension));
+                    System.out.println("   " + firstLine);
                 } else {
-                    printRest(dimension, i);
+                    printRest(arrayLetters, players, dimension, i);
                 }
             }
         }
@@ -59,8 +66,14 @@ public class Main {
 
 
 
-    public static void printRest (int dimension, int count){
+    public static void printRest (String[] arrayLetters, String[] players, int dimension, int count){
         String dots = ".";
+
+        for(int i = 0; i <  players.length; i++){
+            if((players[i]) == arrayLetters[i]){
+                System.out.println((i+1) + " " + dots.repeat(i-1) + "H" + dots.repeat(dimension-i-2)+ " " + (i+1));
+            }
+        }
         if (dimension < 10) {
             System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
         } else if (dimension >= 10 && count < 10){
@@ -68,7 +81,34 @@ public class Main {
         } else {
             System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
         }
+
+
+
+
+
+
+        /*String[] arrayLetters = new String[dimension];
+        if (dimension < 10) {
+            for(int i = 0; i < (dimension); i++){
+                arrayLetters[i] = (firstLine.charAt(i) + Integer.toString(count+1));
+            }
+            if ((players[count]) == arrayLetters[count]){
+                System.out.println((count) + " " + dots.repeat(count-1) + "H" + dots.repeat(dimension-count-2)+ " " + count);
+            } else {
+                System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
+            }
+        } else if (dimension >= 10 && count < 10){
+            if ((players[count]) == arrayLetters[count]){
+                System.out.println("0"+(count) + " " + dots.repeat(count-1) + "H" + dots.repeat(dimension-count-2)+ " " + "0"+(count));
+            } else {
+                System.out.println("0"+(count) + " " + dots.repeat(dimension) + " " + "0"+(count));
+            }
+        } else {
+            System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
+        }*/
+
     }
+
 
 
 
@@ -84,11 +124,6 @@ public class Main {
         int middleColumn = ((dimension/2)+1);
         int[] pos = new int[size];
 
-        // check that board is within the range required.
-        if ((dimension < MIN_DIM) || (dimension > MAX_DIM)) {
-            System.err.println("ERROR: The dimension of the board should be between 4 and 26.");
-            dimension = DEFAULT_DIM;
-        }
 
         // initial position of Hounds.
         for (int count = 0; count < (dimension / 2); count++) {
@@ -133,6 +168,12 @@ public class Main {
             System.out.print("Please enter dimension of board: ");
             dimension = scan.nextInt();
             scan.close();
+        }
+
+        // check that board is within the range required.
+        if ((dimension < MIN_DIM) || (dimension > MAX_DIM)) {
+            System.err.println("ERROR: The dimension of the board should be between 4 and 26.\nDefault dimension of 8x8 is used.");
+            dimension = DEFAULT_DIM;
         }
 
         // locations: coodinates of the hound and the fox in the board according to the dimension that the user has entered
