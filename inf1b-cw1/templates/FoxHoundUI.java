@@ -22,26 +22,93 @@ public class FoxHoundUI {
     public static final int MENU_EXIT = 2;
 
     public static void displayBoard(String[] players, int dimension) {
-        char[] alphabets = new char[dimension];
-        for (int count = 0; count < dimension; count++) {
-            alphabets[count] = (char) ('A' + count);
-        }
 
-        length = dimension + 4;
-        for(int i = 0; i < length; i++){
-            if ((i = 0 || i = (length - 1)) && (dimension < 10)) {
-                System.out.println("  " + printletters(dimension) + "  ");
-            } else {//( ((i = 0 || i = (length - 1)) && (dimension > 10))) {
-                System.out.println("   " + printletters(dimension) + "   ");
+        String firstLine = printLetters(dimension);
+
+        if (dimension < 10) {
+            for (int i = 0; i <= (dimension + 1); i++) {
+                if (i == 0 || i == (dimension + 1)) { // Print the letters ABC... for the first line and the last line.
+                    System.out.println("\n" + "  " + firstLine + "\n");
+                } else {
+                    printFoxHound(players, dimension, (i-1));
+                }
             }
-
-        }
-
-        public static void printLetters(int dimension){
-            for(int i = 0; i < dimension; i++){
-                System.out.print(alphabets[count]);
+        } else {
+            for (int i = 0; i <= (dimension + 1); i++) {
+                if (i == 0 || i == (dimension + 1)) {
+                    System.out.println("\n" + "   " + firstLine + "\n");
+                } else {
+                    printFoxHound(players, dimension, (i-1));
+                }
             }
         }
+    }
+
+    public static void printFoxHound(String[] players, int dimension, int count){
+
+        // Store all alphabets needed for size of the board in an array.
+        char[] letter = new char[dimension];
+
+        // set positions of players based on number of letter and number
+        int[] letterPositon = new int[players.length];
+        int[] columnPosition = new int[players.length];
+
+        // Setting all intial values to zero.
+        String[][] gameBoard = new String[dimension][dimension];
+
+        for(int i = 0; i < letter.length;i++) {
+            letter[i] = (char) ('A' + i);
+        }
+
+        for(int i = 0; i < players.length;i++) {
+            letterPositon[i] = (players[i].charAt(0) - 64);
+            columnPosition[i] = Integer.parseInt(players[i].substring(1)); // To get the column position of fox and hounds.
+        }
+
+        // Set the initial position of whole game board as dots by using a 2D Array.
+        for(int i = 0; i < dimension;i++) {
+            for (int j = 0; j < dimension; j++) {
+                gameBoard[i][j] = ".";
+            }
+        }
+
+        // Set the position of Hounds.
+        for(int i = 0; i < letterPositon.length;i++) {
+            if (columnPosition[i] >= 1 && letterPositon[i] >= 1) {
+                gameBoard[columnPosition[i] - 1][letterPositon[i] - 1] = "H";
+            }
+        }
+
+        // Set position of Fox.
+        gameBoard[columnPosition[columnPosition.length -1]-1][letterPositon[letterPositon.length -1]-1]="F";
+
+        if(dimension < 10){
+            System.out.print((count+1) + " ");
+            for (int j = 0; j < dimension; j++) {
+                System.out.print(gameBoard[count][j]);
+            }
+            System.out.print(" "+(count+1)+"\n");
+        } else if ((dimension >= 10) && count < 9){
+            System.out.print("0"+(count+1) + " ");
+            for (int j = 0; j < dimension; j++) {
+                System.out.print(gameBoard[count][j]);
+            }
+            System.out.print(" "+"0"+(count+1)+"\n");
+        } else {
+            System.out.print((count+1) + " ");
+            for (int j = 0; j < dimension; j++) {
+                System.out.print(gameBoard[count][j]);
+            }
+            System.out.print(" "+(count+1)+"\n");
+        }
+    }
+
+    public static String printLetters (int dimension){
+        String alphabets = "";
+        for(int i = 0; i < dimension; i++){
+            alphabets = alphabets +  (char) ('A' + i);
+        }
+        return alphabets;
     }
 
 
