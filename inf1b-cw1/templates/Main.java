@@ -4,52 +4,113 @@ import java.util.Scanner;
 
 public class Main {
 
-    /** Default dimension of the game board in case none is specified. */
+    /**
+     * Default dimension of the game board in case none is specified.
+     */
     public static final int DEFAULT_DIM = 8;
-    /** Minimum possible dimension of the game board. */
+    /**
+     * Minimum possible dimension of the game board.
+     */
     public static final int MIN_DIM = 4;
-    /** Maximum possiimport java.util.Arrays;ble dimension of the game board. */
+    /**
+     * Maximum possiimport java.util.Arrays;ble dimension of the game board.
+     */
     public static final int MAX_DIM = 26;
 
-    /** Symbol to represent a hound figure. */
+    /**
+     * Symbol to represent a hound figure.
+     */
     public static final char HOUND_FIELD = 'H';
-    /** Symbol to represent the fox figure. */
+    /**
+     * Symbol to represent the fox figure.
+     */
     public static final char FOX_FIELD = 'F';
-
-
-
 
 
     public static void displayBoard(String[] players, int dimension) {
 
         String firstLine = printLetters(dimension);
 
-        // Put all letters in an array. They are later compared for the position of the hounds and the fox.
-        String[][] arrayLetters = new String[dimension][dimension];
-        for(int j = 0; j < dimension; j++){
-            for(int i = 0; i < dimension; i++){
-                arrayLetters[j][i] = (firstLine.charAt(i) + Integer.toString(j+1));
-            }
-        }
-
-        if(dimension < 10){
-            for (int i = 0; i <= (dimension+1); i++) {
-                if (i == 0 || i == (dimension+1)){
-                    System.out.println("  " + firstLine);
+        if (dimension < 10) {
+            for (int i = 0; i <= (dimension + 1); i++) {
+                if (i == 0 || i == (dimension + 1)) { // Print the letters ABC... for the first line and the last line.
+                    System.out.println("\n" + "  " + firstLine + "\n");
                 } else {
-                    printRest(arrayLetters, players, dimension,i);
+                    printFoxHound(players, dimension, (i-1));
                 }
             }
         } else {
-            for (int i = 0; i <= (dimension+1); i++) {
-                if (i == 0 || i == (dimension+1)) {
-                    System.out.println("   " + firstLine);
+            for (int i = 0; i <= (dimension + 1); i++) {
+                if (i == 0 || i == (dimension + 1)) {
+                    System.out.println("\n" + "   " + firstLine + "\n");
                 } else {
-                    printRest(arrayLetters, players, dimension, i);
+                    printFoxHound(players, dimension, (i-1));
                 }
             }
         }
+    }
 
+
+
+
+
+    public static void printFoxHound(String[] players, int dimension, int count){
+
+        // Store all alphabets needed for size of the board in an array.
+        char[] letter = new char[dimension];
+
+        // set positions of players based on number of letter and number
+        int[] letterPositon = new int[players.length];
+        int[] columnPosition = new int[players.length];
+
+        // Setting all intial values to zero.
+        String[][] gameBoard = new String[dimension][dimension];
+
+        for(int i = 0; i < letter.length;i++) {
+            letter[i] = (char) ('A' + i);
+        }
+
+        for(int i = 0; i < players.length;i++) {
+            letterPositon[i] = (players[i].charAt(0) - 64);
+            columnPosition[i] = Integer.parseInt(players[i].substring(1)); // To get the column position of fox and hounds.
+        }
+
+        // Set the initial position of whole game board as dots by using a 2D Array.
+        for(int i = 0; i < dimension;i++) {
+            for (int j = 0; j < dimension; j++) {
+                gameBoard[i][j] = ".";
+            }
+        }
+
+        // Set the position of Hounds.
+        for(int i = 0; i < letterPositon.length;i++) {
+            if (columnPosition[i] >= 1 && letterPositon[i] >= 1) {
+                gameBoard[columnPosition[i] - 1][letterPositon[i] - 1] = "H";
+            }
+        }
+
+        // Set position of Fox.
+        gameBoard[columnPosition[columnPosition.length -1]-1][letterPositon[letterPositon.length -1]-1]="F";
+
+        if(dimension < 10){
+            System.out.print((count+1) + " ");
+            for (int j = 0; j < dimension; j++) {
+                System.out.print(gameBoard[count][j]);
+            }
+            System.out.print(" "+(count+1)+"\n");
+        } else if ((dimension >= 10) && count < 9){
+            System.out.print("0"+(count+1) + " ");
+            for (int j = 0; j < dimension; j++) {
+                System.out.print(gameBoard[count][j]);
+            }
+            System.out.print(" "+"0"+(count+1)+"\n");
+        } else {
+            System.out.print((count+1) + " ");
+            for (int j = 0; j < dimension; j++) {
+                System.out.print(gameBoard[count][j]);
+            }
+            System.out.print(" "+(count+1)+"\n");
+        }
     }
 
 
@@ -63,55 +124,6 @@ public class Main {
         }
         return alphabets;
     }
-
-
-
-
-
-    public static void printRest (String[][] arrayLetters, String[] players, int dimension, int count){
-        String dots = ".";
-
-        for(int i = 0; i <  players.length; i++){
-            if((players[i]) == arrayLetters[i][i]){
-                System.out.println((i+1) + " " + dots.repeat(i-1) + "H" + dots.repeat(dimension-i-2)+ " " + (i+1));
-            }
-        }
-
-        if (dimension < 10) {
-            System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
-        } else if (dimension >= 10 && count < 10){
-            System.out.println("0"+(count) + " " + dots.repeat(dimension) + " " + "0"+(count));
-        } else {
-            System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
-        }
-
-
-
-
-
-
-        /*String[] arrayLetters = new String[dimension];
-        if (dimension < 10) {
-            for(int i = 0; i < (dimension); i++){
-                arrayLetters[i] = (firstLine.charAt(i) + Integer.toString(count+1));
-            }
-            if ((players[count]) == arrayLetters[count]){
-                System.out.println((count) + " " + dots.repeat(count-1) + "H" + dots.repeat(dimension-count-2)+ " " + count);
-            } else {
-                System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
-            }
-        } else if (dimension >= 10 && count < 10){
-            if ((players[count]) == arrayLetters[count]){
-                System.out.println("0"+(count) + " " + dots.repeat(count-1) + "H" + dots.repeat(dimension-count-2)+ " " + "0"+(count));
-            } else {
-                System.out.println("0"+(count) + " " + dots.repeat(dimension) + " " + "0"+(count));
-            }
-        } else {
-            System.out.println((count) + " " + dots.repeat(dimension) + " " + (count));
-        }*/
-
-    }
-
 
 
 
@@ -183,7 +195,7 @@ public class Main {
         String[] locations = new String[dimension];
         locations = (initialisePositions(dimension));
 
-        System.out.println(Arrays.toString(locations) + "\n");
+        System.out.println(Arrays.toString(locations));
         displayBoard(locations, dimension);
 
     }
