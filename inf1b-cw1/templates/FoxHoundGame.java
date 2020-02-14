@@ -59,6 +59,9 @@ public class FoxHoundGame {
             // handle menu choice
             switch(choice) {
                 case FoxHoundUI.MENU_MOVE:
+
+
+
                     turn = swapPlayers(turn);
                     break;
                 case FoxHoundUI.MENU_EXIT:
