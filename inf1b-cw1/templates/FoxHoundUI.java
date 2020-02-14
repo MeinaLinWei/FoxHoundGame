@@ -46,15 +46,15 @@ public class FoxHoundUI {
 
     public static void printFoxHound(String[] players, int dimension, int count){
 
+        // Setting all intial values to zero.
+        String[][] board = new String[dimension][dimension];
+
         // Store all alphabets needed for size of the board in an array.
         char[] letter = new char[dimension];
 
         // set positions of players based on number of letter and number
         int[] letterPositon = new int[players.length];
-        int[] columnPosition = new int[players.length];
-
-        // Setting all intial values to zero.
-        String[][] gameBoard = new String[dimension][dimension];
+        int[] rowPosition = new int[players.length];
 
         for(int i = 0; i < letter.length;i++) {
             letter[i] = (char) ('A' + i);
@@ -62,42 +62,42 @@ public class FoxHoundUI {
 
         for(int i = 0; i < players.length;i++) {
             letterPositon[i] = (players[i].charAt(0) - 64);
-            columnPosition[i] = Integer.parseInt(players[i].substring(1)); // To get the column position of fox and hounds.
+            rowPosition[i] = Integer.parseInt(players[i].substring(1)); // To get the row position of fox and hounds.
         }
 
         // Set the initial position of whole game board as dots by using a 2D Array.
         for(int i = 0; i < dimension;i++) {
             for (int j = 0; j < dimension; j++) {
-                gameBoard[i][j] = ".";
+                board[i][j] = ".";
             }
         }
 
         // Set the position of Hounds.
         for(int i = 0; i < letterPositon.length;i++) {
-            if (columnPosition[i] >= 1 && letterPositon[i] >= 1) {
-                gameBoard[columnPosition[i] - 1][letterPositon[i] - 1] = "H";
+            if (rowPosition[i] >= 1 && letterPositon[i] >= 1) {
+                board[rowPosition[i] - 1][letterPositon[i] - 1] = "H";
             }
         }
 
         // Set position of Fox.
-        gameBoard[columnPosition[columnPosition.length -1]-1][letterPositon[letterPositon.length -1]-1]="F";
+        board[rowPosition[rowPosition.length -1]-1][letterPositon[letterPositon.length -1]-1]="F";
 
         if(dimension < 10){
             System.out.print((count+1) + " ");
             for (int j = 0; j < dimension; j++) {
-                System.out.print(gameBoard[count][j]);
+                System.out.print(board[count][j]);
             }
             System.out.print(" "+(count+1)+"\n");
         } else if ((dimension >= 10) && count < 9){
             System.out.print("0"+(count+1) + " ");
             for (int j = 0; j < dimension; j++) {
-                System.out.print(gameBoard[count][j]);
+                System.out.print(board[count][j]);
             }
             System.out.print(" "+"0"+(count+1)+"\n");
         } else {
             System.out.print((count+1) + " ");
             for (int j = 0; j < dimension; j++) {
-                System.out.print(gameBoard[count][j]);
+                System.out.print(board[count][j]);
             }
             System.out.print(" "+(count+1)+"\n");
         }
@@ -120,7 +120,7 @@ public class FoxHoundUI {
      * @param stdin a Scanner object to read user input from
      * @return a number representing the menu entry selected by the user
      * @throws IllegalArgumentException if the given figure type is invalid
-     * @throws NullPointerException if the given Scanner is null
+     * @throws NullPointerExcmainMenuQueryeption if the given Scanner is null
      */
     public static int mainMenuQuery(char figureToMove, Scanner stdin) {
         Objects.requireNonNull(stdin, "Given Scanner must not be null");
