@@ -70,27 +70,6 @@ public class FoxHoundUtils {
         return boardCoordinates;
     }
 
-    public static void main(String[] args){
-
-        int dimension;
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Do you want to change board dimension? (Y/N): ");
-        String change = scan.next();
-        String changeUpper = change.toUpperCase();                              //If the user input lower case y and n
-
-        if(changeUpper.equals("N")){
-            System.out.println("The default dimension of the board is 8x8.");
-            dimension = DEFAULT_DIM;
-        } else {
-            System.out.print("Please enter dimension of board: ");
-            dimension = scan.nextInt();
-            scan.close();
-        }
-
-        System.out.println(Arrays.toString(initialisePositions(dimension)));
-
-    }
-
     public static boolean isValidMove(int dim, String[] players, char figure, String origin, String destination){
 
         // Get the letter part of the initial position.

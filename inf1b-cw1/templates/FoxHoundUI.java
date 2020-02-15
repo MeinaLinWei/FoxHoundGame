@@ -111,6 +111,32 @@ public class FoxHoundUI {
         return alphabets;
     }
 
+    public static String[] positionQuery(int dim, Scanner stdin){
+
+        // Contain original and final destination.
+        String[] coordinates = new String[2];
+
+        String last = (char)('A' + dim) + dim;
+        System.out.println("Please provide origin and destinations coordinates.\nEnter two positions between A1-" + last);
+        String coordinates = stdin.nextLine();
+
+        // Get letter and number from the original coordinate.
+        char rowOrigin = origin.charAt(0);
+        int numOrigin = Integer.parseInt(origin.substring(1));
+
+        // Get letter and number from the final destination.
+        char rowDestination = destination.charAt(0);
+        int numDestination = Integer.parseInt(origin.substring(1));
+
+        // Check if original position and final destination exist on board.
+        char maxLetter = (char)('A' + dim);
+
+        if ()
+
+        // Store coordinates to be returned.
+
+
+    }
 
 
     /**
@@ -153,4 +179,5 @@ public class FoxHoundUI {
 
         return input;
     }
+
 }
