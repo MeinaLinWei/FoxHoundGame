@@ -113,30 +113,50 @@ public class FoxHoundUI {
 
     public static String[] positionQuery(int dim, Scanner stdin){
 
-        // Contain original and final destination.
-        String[] coordinates = new String[2];
+        String[] arrayCoord = new String[2];
+        boolean ans = true;
 
-        String last = (char)('A' + dim) + dim;
-        System.out.println("Please provide origin and destinations coordinates.\nEnter two positions between A1-" + last);
-        String coordinates = stdin.nextLine();
+        // Force the user to input correct format.
+        do{
+            String last = Character.toString('A' + (dim-1)) + Integer.toString(dim);
 
-        // Get letter and number from the original coordinate.
-        char rowOrigin = origin.charAt(0);
-        int numOrigin = Integer.parseInt(origin.substring(1));
+            Scanner scan = new Scanner(System.in);
+            System.out.println("\nPlease provide origin and destination coordinates.\nEnter two positions between A1-" + last);
+            String coord = scan.nextLine();
+            String[] splitStrings = coord.split(" ");
 
-        // Get letter and number from the final destination.
-        char rowDestination = destination.charAt(0);
-        int numDestination = Integer.parseInt(origin.substring(1));
+            String origin = splitStrings[0];
+            String destination = splitStrings[1];
 
-        // Check if original position and final destination exist on board.
-        char maxLetter = (char)('A' + dim);
+            // Get letter and number from the original coordinate.
+            char rowOrigin = origin.charAt(0);
+            int numOrigin = Integer.parseInt(origin.substring(1));
 
-        if ()
+            // Get letter and number from the final destination.
+            char rowDestination = destination.charAt(0);
+            int numDestination = Integer.parseInt(origin.substring(1));
 
-        // Store coordinates to be returned.
+            // Check if original position and final destination exist on board.
+            char maxLetter = (char)('A' + (dim-1));
 
+            if('A' <= rowOrigin && rowOrigin <= maxLetter && 'A' <= rowDestination && rowDestination <= maxLetter){
+                ans = true;
+                break;
+            } else {
+                System.err.println("ERROR: Please enter valid coordinate pair separated by space.\n");
+                ans = false;
+            }
 
+            // Store coordinates to be return.
+            arrayCoord[0] = origin;
+            arrayCoord[1] = destination;
+
+        }
+        while (ans == false);
+
+        return arrayCoord;
     }
+
 
 
     /**

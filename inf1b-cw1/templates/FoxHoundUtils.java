@@ -110,6 +110,7 @@ public class FoxHoundUtils {
             }
         } else {
             correctDestination = false;
+            System.err.println("ERROR: Invalid move. Try again!\n");
         }
         return correctDestination;
     }

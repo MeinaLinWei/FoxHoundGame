@@ -37,6 +37,7 @@ public class Main {
 
     public static String[] positionQuery(int dim){
 
+        String[] arrayCoord = new String[2];
         boolean ans = true;
 
         // Force the user to input correct format.
@@ -69,13 +70,15 @@ public class Main {
                 System.err.println("ERROR: Please enter valid coordinate pair separated by space.\n");
                 ans = false;
             }
+
+            // Store coordinates to be return.
+            arrayCoord[0] = origin;
+            arrayCoord[1] = destination;
+
         }
         while (ans == false);
 
-        // Store coordinates to be return.
-
-
-        return null;
+        return arrayCoord;
     }
 
 

@@ -55,10 +55,23 @@ public class FoxHoundGame {
             FoxHoundUI.displayBoard(players, dim);
 
             int choice = FoxHoundUI.mainMenuQuery(turn, STDIN_SCAN);
-            
+
             // handle menu choice
             switch(choice) {
                 case FoxHoundUI.MENU_MOVE:
+                    String origin = FoxHoundUI.positionQuery(dim, STDIN_SCAN)[0];
+                    String destination = FoxHoundUI.positionQuery(dim, STDIN_SCAN)[1];
+                    do {
+                        FoxHoundUI.positionQuery(dim, STDIN_SCAN);
+                    }
+                    while(!FoxHoundUtils.isValidMove(dim, players, turn, origin, destination));
+
+                    for(int i = 0; i < players.length; i++){
+                        if (players[i].equals(origin)) {
+                            players[i] = destination;
+                        }
+                    }
+
                     turn = swapPlayers(turn);
                     break;
                 case FoxHoundUI.MENU_EXIT:
