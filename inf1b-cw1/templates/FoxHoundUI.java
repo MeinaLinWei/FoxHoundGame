@@ -116,43 +116,40 @@ public class FoxHoundUI {
         String[] arrayCoord = new String[2];
         boolean ans = true;
 
-        // Force the user to input correct format.
-        do{
-            String last = Character.toString('A' + (dim-1)) + Integer.toString(dim);
+        String last = Character.toString('A' + (dim-1)) + Integer.toString(dim);
 
-            Scanner scan = new Scanner(System.in);
-            System.out.println("\nPlease provide origin and destination coordinates.\nEnter two positions between A1-" + last);
-            String coord = scan.nextLine();
-            String[] splitStrings = coord.split(" ");
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nPlease provide origin and destination coordinates.\nEnter two positions between A1-" + last + ":");
+        String coord = scan.nextLine();
+        String[] splitStrings = coord.split(" ");
 
-            String origin = splitStrings[0];
-            String destination = splitStrings[1];
+        String origin = splitStrings[0];
+        String destination = splitStrings[1];
 
-            // Get letter and number from the original coordinate.
-            char rowOrigin = origin.charAt(0);
-            int numOrigin = Integer.parseInt(origin.substring(1));
 
-            // Get letter and number from the final destination.
-            char rowDestination = destination.charAt(0);
-            int numDestination = Integer.parseInt(origin.substring(1));
+        // Get letter and number from the original coordinate.
+        char rowOrigin = origin.charAt(0);
+        int numOrigin = Integer.parseInt(origin.substring(1));
 
-            // Check if original position and final destination exist on board.
-            char maxLetter = (char)('A' + (dim-1));
+        // Get letter and number from the final destination.
+        char rowDestination = destination.charAt(0);
+        int numDestination = Integer.parseInt(origin.substring(1));
 
-            if('A' <= rowOrigin && rowOrigin <= maxLetter && 'A' <= rowDestination && rowDestination <= maxLetter){
-                ans = true;
-                break;
-            } else {
-                System.err.println("ERROR: Please enter valid coordinate pair separated by space.\n");
-                ans = false;
-            }
+        // Check if original position and final destination exist on board.
+        char maxLetter = (char)('A' + (dim-1));
 
-            // Store coordinates to be return.
-            arrayCoord[0] = origin;
-            arrayCoord[1] = destination;
+        if('A' <= rowOrigin && rowOrigin <= maxLetter && 'A' <= rowDestination && rowDestination <= maxLetter){
+            ans = true;
+        } else {
+            System.err.println("ERROR: Please enter valid coordinate pair separated by space.\n");
+            ans = false;
+            positionQuery(dim, stdin);
 
         }
-        while (ans == false);
+
+        // Store coordinates to be return.
+        arrayCoord[0] = origin;
+        arrayCoord[1] = destination;
 
         return arrayCoord;
     }
@@ -199,5 +196,9 @@ public class FoxHoundUI {
 
         return input;
     }
+
+    /*public static Path fileQuery(Scanner test_in){
+        return null;
+    }*/
 
 }

@@ -89,6 +89,7 @@ public class Main {
 
         // Get the letter part of the initial position.
         char rowOrigin = origin.charAt(0);
+
         // Get the number part of the initial position.
         int numOrigin = Integer.parseInt(origin.substring(1));
 

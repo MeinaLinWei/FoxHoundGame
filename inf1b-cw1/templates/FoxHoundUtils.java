@@ -74,6 +74,7 @@ public class FoxHoundUtils {
 
         // Get the letter part of the initial position.
         char rowOrigin = origin.charAt(0);
+
         // Get the number part of the initial position.
         int numOrigin = Integer.parseInt(origin.substring(1));
 
@@ -90,28 +91,31 @@ public class FoxHoundUtils {
         String finalLeftDown = (leftDown+""+(numOrigin+1)); // fox can move in all four directions.
 
         boolean correctDestination = true;
-        if ((isElement(dim, players, origin, destination)) == true){
-            switch (figure) {
-                case 'F':
-                    if ((finalRightUp.equals(destination) || (finalRightDown.equals(destination)) ||
-                            (finalLeftUp.equals(destination)) || (finalLeftDown.equals(destination))) == true) {
-                        correctDestination = true;
-                    } else {
-                        correctDestination = false;
-                    }
-                    break;
-                case 'H':
-                    if (((finalRightDown.equals(destination)) || (finalLeftDown.equals(destination))) == true) {
-                        correctDestination = true;
-                    } else {
-                        correctDestination = false;
-                    }
-                    break;
-            }
+        if(players.equals(null) || origin.equals(null) || destination.equals(null) || dim < 0){
         } else {
-            correctDestination = false;
-            System.err.println("ERROR: Invalid move. Try again!\n");
+            if ((isElement(dim, players, origin, destination)) == true){
+                switch (figure) {
+                    case 'F':
+                        if ((finalRightUp.equals(destination) || (finalRightDown.equals(destination)) ||
+                                (finalLeftUp.equals(destination)) || (finalLeftDown.equals(destination))) == true) {
+                            correctDestination = true;
+                        } else {
+                            correctDestination = false;
+                        }
+                        break;
+                    case 'H':
+                        if (((finalRightDown.equals(destination)) || (finalLeftDown.equals(destination))) == true) {
+                            correctDestination = true;
+                        } else {
+                            correctDestination = false;
+                        }
+                        break;
+                }
+            } else {
+                correctDestination = false;
+            }
         }
+
         return correctDestination;
     }
 
@@ -141,6 +145,42 @@ public class FoxHoundUtils {
             result2 = true;
         }
         return (result1 && result2); // Check that both conditions are true.
+    }
+
+    public static boolean isFoxWin(String position){
+        boolean foxWinner = true;
+        String place = (position.substring(1));
+
+        if(place.equals("1")){
+            foxWinner = true;
+            System.out.println("The Fox wins!");
+        } else {
+            foxWinner = false;
+        }
+
+        return foxWinner;
+
+    }
+
+    // Check if the fox has no possible move.
+    public static boolean isHoundWin(String[] players, int dim){
+        char rowLetter = players[players.length-1].charAt(0);
+        int rowNum = Integer.parseInt(players[players.length-1].substring(1));
+
+        boolean houndWinner = true;
+
+        boolean rightUp = isValidMove(dim, players, 'F', players[players.length -1], (char)(rowLetter+1) + Integer.toString(rowNum-1));
+        boolean rightDown = isValidMove(dim, players, 'F', players[players.length -1], (char)(rowLetter+1) + Integer.toString(rowNum+1));
+        boolean leftUp = isValidMove(dim, players, 'F', players[players.length -1], (char)(rowLetter-1) + Integer.toString(rowNum-1));
+        boolean leftDown = isValidMove(dim, players, 'F', players[players.length -1], (char)(rowLetter-1) + Integer.toString(rowNum+1));
+
+        if(!rightUp && !rightDown && !leftUp && !leftDown){
+            System.out.println("The Hound wins!");
+            houndWinner = true;
+        }
+
+        return houndWinner;
+
     }
 
 }

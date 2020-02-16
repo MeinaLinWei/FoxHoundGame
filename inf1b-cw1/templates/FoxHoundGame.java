@@ -1,5 +1,5 @@
  import java.util.Scanner;
-
+import java.util.Arrays;
 /** 
  * The Main class of the fox hound program.
  * 
@@ -50,38 +50,43 @@ public class FoxHoundGame {
         // start each game with the Fox
         char turn = FoxHoundUtils.FOX_FIELD;
         boolean exit = false;
-        while(!exit) {
+        while (!exit) {
             System.out.println("\n#################################");
             FoxHoundUI.displayBoard(players, dim);
 
             int choice = FoxHoundUI.mainMenuQuery(turn, STDIN_SCAN);
 
-            // handle menu choice
-            switch(choice) {
-                case FoxHoundUI.MENU_MOVE:
-                    String origin = FoxHoundUI.positionQuery(dim, STDIN_SCAN)[0];
-                    String destination = FoxHoundUI.positionQuery(dim, STDIN_SCAN)[1];
-                    do {
-                        FoxHoundUI.positionQuery(dim, STDIN_SCAN);
-                    }
-                    while(!FoxHoundUtils.isValidMove(dim, players, turn, origin, destination));
+            if (choice == 1) {
+                // handle menu choice
+                String[] input = FoxHoundUI.positionQuery(dim, STDIN_SCAN);
 
-                    for(int i = 0; i < players.length; i++){
-                        if (players[i].equals(origin)) {
-                            players[i] = destination;
+                if ((FoxHoundUtils.isValidMove(dim, players, turn, input[0], input[1])) == true) {
+                    switch (choice) {
+                        case FoxHoundUI.MENU_MOVE:
+                            turn = swapPlayers(turn);
+                            break;
+                        case FoxHoundUI.MENU_EXIT:
+                            exit = true;
+                            break;
+                        default:
+                            System.err.println("ERROR: invalid menu choice: " + choice);
+
+                    }
+
+                    for (int i = 0; i < players.length; i++) {
+                        if (input[0].equals(players[i])) {
+                            players[i] = input[1];
                         }
                     }
-
-                    turn = swapPlayers(turn);
-                    break;
-                case FoxHoundUI.MENU_EXIT:
-                    exit = true;
-                    break;
-                default:
-                    System.err.println("ERROR: invalid menu choice: " + choice);
+                } else {
+                    System.err.println("ERROR! Invalid move. Try again!");
+                }
+            } else {
+                break;
             }
         }
     }
+
 
     /**
      * Entry method for the Fox and Hound game. 
