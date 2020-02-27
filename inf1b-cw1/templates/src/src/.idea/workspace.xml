@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b1a4f0de-f1b1-4e81-a39f-e6da15708a5b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/OOP1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/templates.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FoxHoundIOBasicTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FoxHoundUIBasicTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FoxHoundUtilsBasicTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FoxHoundGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/FoxHoundGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FoxHoundGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoxHoundGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FoxHoundIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoxHoundIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FoxHoundUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/FoxHoundUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FoxHoundUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoxHoundUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FoxHoundUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/FoxHoundUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FoxHoundUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoxHoundUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1XuDACHClsBBmpeeibq6iI5NJip" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b1a4f0de-f1b1-4e81-a39f-e6da15708a5b" name="Default Changelist" comment="" />
+      <created>1581886939107</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581886939107</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -1,6 +1,10 @@
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.Objects;
 import java.util.Arrays;
+import java.nio.file.Path;
+
+
 
 /**
  * A utility class for the fox hound program.
@@ -11,15 +15,20 @@ import java.util.Arrays;
 public class FoxHoundUI {
 
     /** Number of main menu entries. */
-    private static final int MENU_ENTRIES = 2;
+    private static final int MENU_ENTRIES = 4;
     /** Main menu display string. */
     private static final String MAIN_MENU =
-        "\n1. Move\n2. Exit\n\nEnter 1 - 2:";
+        "\n1. Move\n2. Save Game\n3. Load Game\n4. Exit\n\nEnter 1 - 4:";
 
     /** Menu entry to select a move action. */
     public static final int MENU_MOVE = 1;
+    /** Menu entry to load the program. */
+    public static final int MENU_SAVE = 2;
+    /** Menu entry to load the program. */
+    public static final int MENU_LOAD = 3;
     /** Menu entry to terminate the program. */
-    public static final int MENU_EXIT = 2;
+    public static final int MENU_EXIT = 4;
+
 
     public static void displayBoard(String[] players, int dimension) {
 
@@ -27,16 +36,20 @@ public class FoxHoundUI {
 
         if (dimension < 10) {
             for (int i = 0; i <= (dimension + 1); i++) {
-                if (i == 0 || i == (dimension + 1)) { // Print the letters ABC... for the first line and the last line.
-                    System.out.println("\n" + "  " + firstLine + "\n");
+                if (i == 0){ // Print the letters for the first line.
+                    System.out.println("  " + firstLine + "  \n");
+                } else if (i == (dimension + 1)) {
+                    System.out.println("\n  " + firstLine + "  ");
                 } else {
                     printFoxHound(players, dimension, (i-1));
                 }
             }
         } else {
             for (int i = 0; i <= (dimension + 1); i++) {
-                if (i == 0 || i == (dimension + 1)) {
-                    System.out.println("\n" + "   " + firstLine + "\n");
+                if (i == 0){ // Print the letters for the first line.
+                    System.out.println("   " + firstLine + "   \n");
+                } else if (i == (dimension + 1)) {
+                    System.out.println("\n   " + firstLine + "  ");
                 } else {
                     printFoxHound(players, dimension, (i-1));
                 }
@@ -46,14 +59,14 @@ public class FoxHoundUI {
 
     public static void printFoxHound(String[] players, int dimension, int count){
 
-        // Setting all intial values to zero.
+        // Setting all initial values to zero.
         String[][] board = new String[dimension][dimension];
 
         // Store all alphabets needed for size of the board in an array.
         char[] letter = new char[dimension];
 
         // set positions of players based on number of letter and number
-        int[] letterPositon = new int[players.length];
+        int[] letterPosition = new int[players.length];
         int[] rowPosition = new int[players.length];
 
         for(int i = 0; i < letter.length;i++) {
@@ -61,7 +74,7 @@ public class FoxHoundUI {
         }
 
         for(int i = 0; i < players.length;i++) {
-            letterPositon[i] = (players[i].charAt(0) - 64);
+            letterPosition[i] = (players[i].charAt(0) - 64);
             rowPosition[i] = Integer.parseInt(players[i].substring(1)); // To get the row position of fox and hounds.
         }
 
@@ -73,14 +86,14 @@ public class FoxHoundUI {
         }
 
         // Set the position of Hounds.
-        for(int i = 0; i < letterPositon.length;i++) {
-            if (rowPosition[i] >= 1 && letterPositon[i] >= 1) {
-                board[rowPosition[i] - 1][letterPositon[i] - 1] = "H";
+        for(int i = 0; i < letterPosition.length;i++) {
+            if (rowPosition[i] >= 1 && letterPosition[i] >= 1) {
+                board[rowPosition[i] - 1][letterPosition[i] - 1] = "H";
             }
         }
 
         // Set position of Fox.
-        board[rowPosition[rowPosition.length -1]-1][letterPositon[letterPositon.length -1]-1]="F";
+        board[rowPosition[rowPosition.length -1]-1][letterPosition[letterPosition.length -1]-1]="F";
 
         if(dimension < 10){
             System.out.print((count+1) + " ");
@@ -114,13 +127,11 @@ public class FoxHoundUI {
     public static String[] positionQuery(int dim, Scanner stdin){
 
         String[] arrayCoord = new String[2];
-        boolean ans = true;
 
-        String last = Character.toString('A' + (dim-1)) + Integer.toString(dim);
+        String last = String.valueOf((char)('A' + (dim-1)) + Integer.toString(dim)); // To get the last coordinate of the board.
 
-        Scanner scan = new Scanner(System.in);
-        System.out.println("\nPlease provide origin and destination coordinates.\nEnter two positions between A1-" + last + ":");
-        String coord = scan.nextLine();
+        System.out.println("Provide origin and destination coordinates.\nEnter two positions between A1-" + last + ":\n ");
+        String coord = stdin.nextLine();
         String[] splitStrings = coord.split(" ");
 
         String origin = splitStrings[0];
@@ -138,18 +149,15 @@ public class FoxHoundUI {
         // Check if original position and final destination exist on board.
         char maxLetter = (char)('A' + (dim-1));
 
-        if('A' <= rowOrigin && rowOrigin <= maxLetter && 'A' <= rowDestination && rowDestination <= maxLetter){
-            ans = true;
+        if('A' <= rowOrigin && rowOrigin <= 'H' && 'A' <= rowDestination && rowDestination <='H'&& rowDestination <= maxLetter &&
+                rowOrigin <= maxLetter && numOrigin <=dim && numOrigin>=1 && numDestination <= dim && numDestination>=1){
+            // Store coordinates to be return.
+            arrayCoord[0] = origin;
+            arrayCoord[1] = destination;
+
         } else {
-            System.err.println("ERROR: Please enter valid coordinate pair separated by space.\n");
-            ans = false;
-            positionQuery(dim, stdin);
-
+            System.err.println("These are not valid coordinates");
         }
-
-        // Store coordinates to be return.
-        arrayCoord[0] = origin;
-        arrayCoord[1] = destination;
 
         return arrayCoord;
     }
@@ -163,7 +171,7 @@ public class FoxHoundUI {
      * @param stdin a Scanner object to read user input from
      * @return a number representing the menu entry selected by the user
      * @throws IllegalArgumentException if the given figure type is invalid
-     * @throws NullPointerExcmainMenuQueryeption if the given Scanner is null
+     * @throws NullPointerException if the given Scanner is null
      */
     public static int mainMenuQuery(char figureToMove, Scanner stdin) {
         Objects.requireNonNull(stdin, "Given Scanner must not be null");
@@ -197,8 +205,17 @@ public class FoxHoundUI {
         return input;
     }
 
-    /*public static Path fileQuery(Scanner test_in){
-        return null;
-    }*/
+    public static Path fileQuery(Scanner result){
+        System.out.println("Enter file path:");
+        result.useDelimiter("\\Z");
+        String results = result.next();
+        Path path = Paths.get(results);
+
+        if(result.equals(null)){
+            throw new NullPointerException();
+        }
+        return path;
+    }
+
 
 }

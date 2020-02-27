@@ -1,3 +1,5 @@
+ import java.nio.file.Path;
+ import java.nio.file.Paths;
  import java.util.Scanner;
 import java.util.Arrays;
 /** 
@@ -64,6 +66,12 @@ public class FoxHoundGame {
                     switch (choice) {
                         case FoxHoundUI.MENU_MOVE:
                             turn = swapPlayers(turn);
+                            break;
+                        case FoxHoundUI.MENU_SAVE:
+                            FoxHoundIO.saveGame(players, turn, FoxHoundUI.fileQuery(STDIN_SCAN));
+                            break;
+                        case FoxHoundUI.MENU_LOAD:
+                            FoxHoundIO.loadGame(players, FoxHoundUI.fileQuery(STDIN_SCAN));
                             break;
                         case FoxHoundUI.MENU_EXIT:
                             exit = true;

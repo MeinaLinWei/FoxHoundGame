@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="593df8e6-87ed-47cb-9dcf-538d85489aea" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/OOP1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/templates.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/src/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/src/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/src/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/src/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/src/FoxHoundIOBasicTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/src/FoxHoundUIBasicTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/src/FoxHoundUtilsBasicTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoxHoundGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/FoxHoundGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoxHoundGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/FoxHoundGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoxHoundIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/FoxHoundIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoxHoundUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/FoxHoundUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoxHoundUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/FoxHoundUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoxHoundUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/FoxHoundUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoxHoundUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/FoxHoundUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1XuBKh4vk9HJydmSrgQWHUwgYJ6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="11" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/src" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="593df8e6-87ed-47cb-9dcf-538d85489aea" name="Default Changelist" comment="" />
+      <created>1581886036624</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581886036624</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="311" y="58" width="800" height="677" key="#Project_Structure" timestamp="1581886427825">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="311" y="58" width="800" height="677" key="#Project_Structure/67.27.1299.741@67.27.1299.741" timestamp="1581886427825" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1582763663277">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1582763663277" />
+    <state x="67" y="27" width="1289" height="741" key="new project wizard" timestamp="1581886400922">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="67" y="27" width="1289" height="741" key="new project wizard/67.27.1299.741@67.27.1299.741" timestamp="1581886400922" />
+  </component>
+</project>
